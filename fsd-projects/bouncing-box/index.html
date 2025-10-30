@@ -23,7 +23,7 @@
         height: 100vh;
       }
     </style>
-    <!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+    <!--  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
   </head>
 
   <body class="board">
@@ -69,6 +69,10 @@
         //////////////////////////////////////////////////////////////////
 
         // TODO 2 - Variable declarations
+        var positionX = 0;
+        var points = 0;
+        var speed = 10;
+
 
 
 
@@ -80,8 +84,17 @@
          * If the box drifts off the screen, turn it around!
          */
         function update() {
-          moveBoxTo(200);
-         
+
+moveBoxTo(positionX)
+positionX = positionX + speed;
+if(positionX > boardWidth){
+  speed *= -1;
+}
+if (positionX < 0){
+  speed *= -1;
+}
+
+
         
 
           
@@ -95,7 +108,13 @@
          * - move the box to the left side of the screen.
          */
         function handleBoxClick() {
+            points = points + 1;
+           changeBoxText(points);
+          speed = 3*points + 10;
 
+
+
+         
 
 
 
@@ -107,3 +126,4 @@
     </script>
   </body>
 </html>
+
